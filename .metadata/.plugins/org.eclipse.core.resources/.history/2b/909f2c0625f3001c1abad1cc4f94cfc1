@@ -1,0 +1,41 @@
+'''
+Created on Jun 22, 2022
+
+@author: McCaitlyn
+'''
+from typing import List
+from uuid import UUID, uuid4
+from model import User, Gender, Role
+
+' Importing fastapi'
+from fastapi import FastAPI
+
+'creating instance of application'
+app = FastAPI()
+
+db: List[User] = [
+    User(id = UUID('52d60b6f-06da-4837-8c76-edecf9cf5f23'),
+         first_name = "McCaitlyn",
+         last_name = 'Despues', 
+         gender = Gender.female, 
+         roles = [Role.student] 
+         ),
+    User(id = UUID('bddb67c6-49ae-4e1b-9485-92f93dc47ed2'),
+         first_name = "Brian",
+         last_name = 'Morales', 
+         gender = Gender.male, 
+         roles = [Role.student] 
+         )
+]
+'instance of our app'
+'this is our GET http request'
+'currently the root (/) is the path'
+@app.get("/")
+async def root():
+    'for now we return dictionary '
+    return {"hello": "Bamz"}
+
+
+@app.get("/api/v1/users")
+async def fetch_users():
+    return db; 

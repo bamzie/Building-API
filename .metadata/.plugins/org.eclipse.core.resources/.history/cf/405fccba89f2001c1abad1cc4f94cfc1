@@ -1,0 +1,15 @@
+'''
+Created on Jun 22, 2022
+
+@author: McCaitlyn
+'''
+
+
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def root():
+    return {"hello": "world"}
+

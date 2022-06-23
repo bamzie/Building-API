@@ -1,0 +1,18 @@
+'''
+Created on Jun 22, 2022
+
+@author: McCaitlyn
+'''
+
+' Importing fastapi'
+from fastapi import FastAPI
+
+'creating instance of application'
+app = FastAPI()
+
+'returns a route for a get request'
+'we specify the root(path) with in "/"'
+@app.get("/")
+def root():
+    'for now we return dictionary '
+    return {"hello": "world"}
